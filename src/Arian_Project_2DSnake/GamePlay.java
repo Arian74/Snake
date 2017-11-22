@@ -1,0 +1,159 @@
+package Arian_Project_2DSnake;
+
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+
+import javax.swing.ImageIcon;
+import javax.swing.JPanel;
+import javax.swing.Timer;
+
+
+
+public class GamePlay extends JPanel implements KeyListener, ActionListener
+{
+	private static Color colorg=new Color(102, 0, 255);
+	private static Color colort=new Color(175, 175, 175);
+	
+	private int[] snakeXlenght=new int[750];
+	private int[] snakeYlenght=new int[750];
+	
+	private boolean left=false;
+	private boolean up=false;
+	private boolean right=false;
+	private boolean down=false;
+	
+	private ImageIcon leftMouth;
+	private ImageIcon upMouth;
+	private ImageIcon rightMouth;
+	private ImageIcon downMouth;
+	
+	private int lenghtSnake=3;
+	
+	private Timer timer;
+	private int delay=100;
+	private int moves=0;
+	
+	private ImageIcon snakeImage;
+	private ImageIcon titleImage;
+	
+	public GamePlay() 
+	{
+	
+		addKeyListener(this);
+		setFocusable(true);
+		setFocusTraversalKeysEnabled(false);
+		timer=new Timer (delay, this);
+		timer.start();
+		
+	}
+	public void paint(Graphics g) 
+	{
+		
+		if(moves==0) 
+		{
+			snakeXlenght[2]=50;
+			snakeXlenght[1]=70;
+			snakeXlenght[0]=100;
+		
+			snakeYlenght[2]=100;
+			snakeYlenght[1]=100;
+			snakeYlenght[0]=100;
+		}
+		
+		
+	// draw title image border
+		g.setColor(Color.DARK_GRAY);
+		g.drawRect(14, 10, 853, 55);
+		g.setColor(colort);
+		g.fillRect(16, 12, 850, 52);
+		// draw the title image
+		titleImage=new ImageIcon("res/snaketitlem.png");
+		titleImage.paintIcon(this, g, 400, 10);
+
+		
+	// draw border for game	
+		
+		g.setColor(Color.DARK_GRAY);
+		g.drawRect(14, 73, 853, 578);
+		
+	// draw bacground for the gameplay
+		g.setColor(colorg);
+		g.fillRect(16, 75, 850, 575);
+		
+		rightMouth= new ImageIcon("res/rightMouth.png");
+		rightMouth.paintIcon(this, g, snakeXlenght[0], snakeYlenght[0]);
+		
+		for(int i=0; i<lenghtSnake; ++i) 
+		{
+			if(i==0 && left) 
+			{
+				leftMouth= new ImageIcon("res/leftMouth.png");
+				leftMouth.paintIcon(this, g, snakeXlenght[i], snakeYlenght[i]);
+			}
+			if(i==0 && up) 
+			{
+				upMouth= new ImageIcon("res/upMouth.png");
+				upMouth.paintIcon(this, g, snakeXlenght[i], snakeYlenght[i]);
+			}
+			if(i==0 && right) 
+			{
+				rightMouth= new ImageIcon("res/rightMouth.png");
+				rightMouth.paintIcon(this, g, snakeXlenght[i], snakeYlenght[i]);
+			}
+			if(i==0 && down) 
+			{
+				downMouth= new ImageIcon("res/downMouth.png");
+				downMouth.paintIcon(this, g, snakeXlenght[i], snakeYlenght[i]);
+			}
+			if(i!=0) 
+			{
+				snakeImage= new ImageIcon("res/snakeImage.png");// ciało wąża
+				snakeImage.paintIcon(this, g, snakeXlenght[i], snakeYlenght[i]);
+			}
+		}
+		
+		g.dispose();
+		
+		
+		
+		
+		
+		
+	}
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void keyPressed(KeyEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void keyReleased(KeyEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void keyTyped(KeyEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+}
