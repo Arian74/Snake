@@ -126,12 +126,108 @@ public class GamePlay extends JPanel implements KeyListener, ActionListener
 	}
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
+		timer.start();
+		if(left) 
+		{
+			for(int r =lenghtSnake-1; r>=0; r--) 
+			{
+				snakeYlenght(r+1)=snakeYlenght(r);	
+			}
+			for(int r =lenghtSnake; r>=0; r--) 
+			{
+				if(r==0) 
+				{
+					snakeXlenght(r)=snakeXlenght(r)+;	
+				}
+			}
+		}
+		if(up) 
+		{
+			
+		}
+		if(right) 
+		{
+			
+		}
+		if(down)
+		{
+			
+		}
 		
 	}
 	@Override
 	public void keyPressed(KeyEvent e) {
-		// TODO Auto-generated method stub
+		if(e.getKeyCode()==KeyEvent.VK_LEFT) 
+		{
+			moves++;
+			left=true;
+			if(!right)
+			{
+				left=true;
+			}
+			else
+			{
+				left=false;
+				right=true;
+			}	
+			up=false;
+			down=false;
+		}
+		if(e.getKeyCode()==KeyEvent.VK_UP) 
+		{
+			moves++;
+			up=true;
+			if(!down)
+			{
+				up=true;
+			}
+			else
+			{
+				up=false;
+				down=true;
+			}	
+			
+			left=false;
+			
+			right=false;
+		}
+		if(e.getKeyCode()==KeyEvent.VK_RIGHT) 
+		{
+			moves++;
+			right=true;
+			if(!left)
+			{
+				right=true;
+			}
+			else
+			{
+				right=false;
+				left=true;
+			}	
+			up=false;
+			down=false;
+		}
+		if(e.getKeyCode()==KeyEvent.VK_DOWN) 
+		{
+			moves++;
+			down=true;
+			if(!up)
+			{
+				down=true;
+			}
+			else
+			{
+				down=false;
+				up=true;
+			}	
+			
+			left=false;
+			
+			right=false;
+		}
+		
+		
+		
 		
 	}
 	@Override
