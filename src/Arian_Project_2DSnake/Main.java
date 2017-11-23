@@ -32,7 +32,7 @@ public class Main {
 		 	JFrame frame = new JFrame();
 		 	GamePlay gameplay=new GamePlay();
 			frame.setTitle("Sssssnake");
-			frame.setBounds(10, 10, 900, 700);
+			frame.setBounds(10, 10, 910, 710);
 			frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 			frame.addComponentListener(new ComponentAdapter() 
 			{

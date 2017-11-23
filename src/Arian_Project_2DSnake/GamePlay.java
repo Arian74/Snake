@@ -56,16 +56,15 @@ public class GamePlay extends JPanel implements KeyListener, ActionListener
 		if(moves==0) 
 		{
 			snakeXlenght[2]=50;
-			snakeXlenght[1]=70;
-			snakeXlenght[0]=100;
+			snakeXlenght[1]=80;
+			snakeXlenght[0]=110;
 		
 			snakeYlenght[2]=100;
 			snakeYlenght[1]=100;
 			snakeYlenght[0]=100;
 		}
 		
-		
-	// draw title image border
+	// rysowanie tytułowej belki wymiary formularza 900x700
 		g.setColor(Color.DARK_GRAY);
 		g.drawRect(14, 10, 853, 55);
 		g.setColor(colort);
@@ -119,10 +118,6 @@ public class GamePlay extends JPanel implements KeyListener, ActionListener
 		g.dispose();
 		
 		
-		
-		
-		
-		
 	}
 	@Override
 	public void actionPerformed(ActionEvent e) {
@@ -131,27 +126,94 @@ public class GamePlay extends JPanel implements KeyListener, ActionListener
 		{
 			for(int r =lenghtSnake-1; r>=0; r--) 
 			{
-				snakeYlenght(r+1)=snakeYlenght(r);	
+				snakeYlenght[r+1]=snakeYlenght[r];	
 			}
 			for(int r =lenghtSnake; r>=0; r--) 
 			{
 				if(r==0) 
 				{
-					snakeXlenght(r)=snakeXlenght(r)+;	
+					snakeXlenght[r] = snakeXlenght[r] - 30;	
+				}
+				else
+				{
+					snakeXlenght[r] = snakeXlenght[r-1];	
+				}
+				if(snakeXlenght[r] < 14)
+				{
+					snakeXlenght[r] = 853;
 				}
 			}
+			repaint();
 		}
 		if(up) 
 		{
+			for(int r =lenghtSnake-1; r>=0; r--) 
+			{
+				snakeXlenght[r+1]=snakeXlenght[r];	
+			}
+			for(int r =lenghtSnake; r>=0; r--) 
+			{
+				if(r==0) 
+				{
+					snakeYlenght[r] = snakeYlenght[r] - 30;	
+				}
+				else
+				{
+					snakeYlenght[r] = snakeYlenght[r-1];	
+				}
+				if(snakeYlenght[r]<75)
+				{
+					snakeYlenght[r] = 575;
+				}
+			}
+			repaint();	
 			
 		}
 		if(right) 
 		{
-			
+			for(int r =lenghtSnake-1; r>=0; r--) 
+			{
+				snakeYlenght[r+1]=snakeYlenght[r];	
+			}
+			for(int r =lenghtSnake; r>=0; r--) 
+			{
+				if(r==0) 
+				{
+					snakeXlenght[r] = snakeXlenght[r] + 30;	
+				}
+				else
+				{
+					snakeXlenght[r] = snakeXlenght[r-1];	
+				}
+				if(snakeXlenght[r]>853)
+				{
+					snakeXlenght[r] = 14;
+				}
+			}
+			repaint();	
 		}
 		if(down)
 		{
-			
+			for(int r =lenghtSnake-1; r>=0; r--) 
+			{
+				snakeXlenght[r+1]=snakeXlenght[r];	
+			}
+			for(int r =lenghtSnake; r>=0; r--) 
+			{
+				if(r==0) 
+				{
+					snakeYlenght[r] = snakeYlenght[r] + 30;	
+				}
+				else
+				{
+					snakeYlenght[r] = snakeYlenght[r-1];	
+				}
+				if(snakeYlenght[r] > 640)
+				{
+					snakeYlenght[r] = 75;
+				}
+			}
+			repaint();
 		}
 		
 	}
@@ -188,7 +250,6 @@ public class GamePlay extends JPanel implements KeyListener, ActionListener
 			}	
 			
 			left=false;
-			
 			right=false;
 		}
 		if(e.getKeyCode()==KeyEvent.VK_RIGHT) 
@@ -222,7 +283,6 @@ public class GamePlay extends JPanel implements KeyListener, ActionListener
 			}	
 			
 			left=false;
-			
 			right=false;
 		}
 		
